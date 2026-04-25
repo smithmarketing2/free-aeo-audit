@@ -11,18 +11,86 @@
             box-sizing: border-box;
         }
         
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(96, 165, 250, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 30s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 28s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 24s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 26s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 32s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 21s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; animation-duration: 29s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 6s; animation-duration: 27s; }
+        .particle:nth-child(11) { left: 25%; animation-delay: 3s; animation-duration: 23s; }
+        .particle:nth-child(12) { left: 35%; animation-delay: 7s; animation-duration: 31s; }
+        .particle:nth-child(13) { left: 45%; animation-delay: 2s; animation-duration: 25s; }
+        .particle:nth-child(14) { left: 55%; animation-delay: 5s; animation-duration: 28s; }
+        .particle:nth-child(15) { left: 65%; animation-delay: 1s; animation-duration: 24s; }
+        .particle:nth-child(16) { left: 75%; animation-delay: 4s; animation-duration: 30s; }
+        .particle:nth-child(17) { left: 85%; animation-delay: 6s; animation-duration: 22s; }
+        .particle:nth-child(18) { left: 5%; animation-delay: 3s; animation-duration: 26s; }
+        .particle:nth-child(19) { left: 95%; animation-delay: 5s; animation-duration: 29s; }
+        .particle:nth-child(20) { left: 50%; animation-delay: 0s; animation-duration: 35s; }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e3a5f 100%);
+            background: linear-gradient(-45deg, #0f172a, #1e3a5f, #2563eb, #1e40af, #1e3a5f, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             color: #fff;
             line-height: 1.6;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
         
         .header {
@@ -318,6 +386,30 @@
                 <a href="#contact">Contact</a>
             </p>
         </div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
     
     <script>
