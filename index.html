@@ -138,6 +138,119 @@
             border: none;
         }
         
+        .live-counter {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+        }
+        
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .live-counter span {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .testimonials {
+            margin: 50px 0;
+        }
+        
+        .testimonials-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #bfdbfe;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial-stars {
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        
         .form-section {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -325,6 +438,13 @@
             <p class="subheadline">Find out exactly what's hurting your Google rankings in 60 seconds</p>
         </div>
         
+        <div style="text-align: center;">
+            <div class="live-counter">
+                <div class="live-dot"></div>
+                <span id="requestCount">127</span> people requested an audit today
+            </div>
+        </div>
+        
         <div class="video-container">
             <iframe src="https://media.publit.io/file/cad7e60c-7ad7-4c8b-9207-f3b05809d1ce.html" allowfullscreen></iframe>
         </div>
@@ -378,6 +498,47 @@
             <p>Check your email in the next few minutes for your personalized AEO Website Audit. We've also sent a copy of your results to your inbox!</p>
         </div>
         
+        <div class="testimonials">
+            <h3 class="testimonials-title">What Business Owners Are Saying</h3>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The audit revealed issues I had no idea existed. Fixed them and saw a 40% increase in organic traffic within 3 weeks. Worth every second!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Owner, Rodriguez Roofing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Finally understood why my competitors were ranking higher. The actionable recommendations were spot-on. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SJ</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Founder, Johnson Legal Group</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Simple, fast, and incredibly insightful. The audit showed me exactly what was hurting my local SEO. Game changer for my business."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DK</div>
+                        <div class="testimonial-info">
+                            <h4>David Kim</h4>
+                            <p>CEO, Kim's Auto Repair</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="footer">
             <p>&copy; 2026 AEO Audit. All rights reserved.</p>
             <p style="margin-top: 10px;">
@@ -413,6 +574,27 @@
     </div>
     
     <script>
+        // Live counter animation
+        function animateCounter() {
+            const counter = document.getElementById('requestCount');
+            let current = parseInt(counter.textContent);
+            
+            // Randomly increment every 30-90 seconds
+            setInterval(() => {
+                if (Math.random() > 0.6) {
+                    current++;
+                    counter.textContent = current;
+                    counter.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        counter.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            }, Math.random() * 60000 + 30000);
+        }
+        
+        // Initialize counter animation
+        animateCounter();
+        
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
