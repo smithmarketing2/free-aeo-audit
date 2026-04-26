@@ -397,6 +397,95 @@
             to { transform: rotate(360deg); }
         }
         
+        .submit-loading {
+            position: relative;
+            pointer-events: none;
+        }
+        
+        .submit-loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .form-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 10;
+        }
+        
+        .form-overlay.show {
+            display: flex;
+        }
+        
+        .loading-animation {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+        
+        .loading-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(59, 130, 246, 0.2);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-ring:nth-child(2) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-color: rgba(96, 165, 250, 0.2);
+            border-top-color: #60a5fa;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        
+        .loading-ring:nth-child(3) {
+            width: 30%;
+            height: 30%;
+            top: 35%;
+            left: 35%;
+            border-color: rgba(147, 197, 253, 0.2);
+            border-top-color: #93c5fd;
+            animation: spin 2s linear infinite;
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #93c5fd;
+            animation: pulse-text 1.5s infinite;
+        }
+        
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -449,8 +538,18 @@
             <iframe src="https://media.publit.io/file/cad7e60c-7ad7-4c8b-9207-f3b05809d1ce.html" allowfullscreen></iframe>
         </div>
         
-        <div class="form-section" id="formSection">
+        <div class="form-section" id="formSection" style="position: relative;">
             <h2 class="form-title">Enter Your Details to Get Your Free Audit</h2>
+            
+            <!-- Loading Overlay -->
+            <div class="form-overlay" id="formOverlay">
+                <div class="loading-animation">
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                    <div class="loading-ring"></div>
+                </div>
+                <p class="loading-text">Analyzing your website...</p>
+            </div>
             
             <form id="leadForm">
                 <div class="form-group">
@@ -615,11 +714,11 @@
             const btnText = document.getElementById('btnText');
             const formSection = document.getElementById('formSection');
             const successMessage = document.getElementById('successMessage');
+            const formOverlay = document.getElementById('formOverlay');
             
-            // Show loading state
-            submitBtn.disabled = true;
-            spinner.style.display = 'inline-block';
-            btnText.textContent = 'Sending...';
+            // Show loading animation overlay
+            formOverlay.classList.add('show');
+            submitBtn.classList.add('submit-loading');
             
             // Collect form data
             const formData = {
@@ -648,10 +747,9 @@
                 console.error('Error:', error);
                 alert('Something went wrong. Please try again or contact us directly.');
                 
-                // Reset button
-                submitBtn.disabled = false;
-                spinner.style.display = 'none';
-                btnText.textContent = 'Get My Free Audit';
+                // Hide loading animation
+                formOverlay.classList.remove('show');
+                submitBtn.classList.remove('submit-loading');
             }
         });
     </script>
